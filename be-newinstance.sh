@@ -92,8 +92,31 @@ mkdir $DIR/$BEFRONT_DIR
 
 echo "Executing: mkdir $DIR/apache"
 mkdir $DIR/apache
-echo "Executing: touch $DIR/apache/$BE_INSTANCE"
-touch $DIR/apache/$BE_INSTANCE
+
+
+APACHE_CFG="
+<VirtualHost *:80>
+		ServerName manage.$BE_INSTANCE.bedita.net
+		DocumentRoot $DIR/bedita-app/webroot
+
+        <Directory $DIR/bedita-app/webroot>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+                Include /etc/apache2/php.conf
+        </Directory>
+
+        ErrorLog /var/log/apache2/$BE_INSTANCE/manage-error.log
+        LogLevel debug
+        ServerSignature Off
+</VirtualHost>"
+
+echo "Executing: sudo mkdir /var/log/apache2/$BE_INSTANCE"
+sudo mkdir /var/log/apache2/$BE_INSTANCE
+
+echo "Creating $DIR/apache/$BE_INSTANCE apache config file"
+echo $APACHE_CFG > $DIR/apache/$BE_INSTANCE
 
 echo "Executing: mkdir $DIR/addons"
 mkdir $DIR/addons
@@ -109,7 +132,9 @@ cp database.php.sample database.php
 echo "---------------------------------------------------"
 echo "Instance $BE_INSTANCE created"
 echo "---------------------------------------------------"
-echo "\n\nNow symlink your apache vhost config file:\n"
+echo "\n\nNow:"
+echo " 1. check and modify your  $DIR/apache/$BE_INSTANCE apache config file"
+echo " 2. symlink your apache vhost config file:\n"
 echo "  ln -s $DIR/apache/$BE_INSTANCE /etc/apache2/sites-enabled/"
-echo "\n\nThen reload apache and use BEdita web wizard to finish setup"
+echo " 3. reload apache and use BEdita web wizard to finish setup"
 
