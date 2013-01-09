@@ -2,11 +2,11 @@
 
 # define usage function
 usage(){
-	echo "Usage: $0 name [branch] [base-path] [unix-group-name]\n\n"
-	echo "  name: instance name (mandatory)\n"
-	echo "  branch: git branch for BEdita (default master)\n"
-	echo "  base-path: base path fore new instance, will be created in base path/name (default /home/bedita3)\n"
-	echo "  unix-group-name: unix group name for permission on instance (default bedita)\n"
+	echo "Usage: $0 name [branch] [base-path] [unix-group-name]\n"
+	echo "  name: instance name (mandatory)"
+	echo "  branch: git branch for BEdita (default master)"
+	echo "  base-path: base path fore new instance, will be created in base path/name (default /home/bedita3)"
+	echo "  unix-group-name: unix group name - instance permissions (default bedita)\n"
 	exit 1
 }
 
