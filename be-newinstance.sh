@@ -135,6 +135,6 @@ echo "---------------------------------------------------"
 echo "\n\nNow:"
 echo " 1. check and modify your  $DIR/apache/$BE_INSTANCE apache config file"
 echo " 2. symlink your apache vhost config file:\n"
-echo "  ln -s $DIR/apache/$BE_INSTANCE /etc/apache2/sites-enabled/"
+echo "  sudo ln -s $DIR/apache/$BE_INSTANCE /etc/apache2/sites-enabled/"
 echo " 3. reload apache and use BEdita web wizard to finish setup"
 
