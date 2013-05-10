@@ -96,7 +96,7 @@ mkdir $DIR/apache
 
 APACHE_CFG="
 <VirtualHost *:80>
-		ServerName manage.$BE_INSTANCE.bedita.net
+	ServerName manage.$BE_INSTANCE.bedita.net
 		DocumentRoot $DIR/bedita-app/webroot
 
         <Directory $DIR/bedita-app/webroot>
@@ -116,7 +116,7 @@ echo "Executing: sudo mkdir /var/log/apache2/$BE_INSTANCE"
 sudo mkdir /var/log/apache2/$BE_INSTANCE
 
 echo "Creating $DIR/apache/$BE_INSTANCE apache config file"
-echo $APACHE_CFG > $DIR/apache/$BE_INSTANCE
+echo "$APACHE_CFG" > $DIR/apache/$BE_INSTANCE
 
 echo "Executing: mkdir $DIR/addons"
 mkdir $DIR/addons
