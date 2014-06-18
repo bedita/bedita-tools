@@ -21,7 +21,7 @@ BE_INSTANCE=$1
 # defaults
 BE_DIR="/home/bedita3"
 BE_GROUP="bedita"
-BE_BRANCH="master"
+BE_BRANCH="3-corylus"
 
 if [ $# -gt 1 ]
 then
