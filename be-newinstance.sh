@@ -100,7 +100,7 @@ APACHE_CFG="
 		DocumentRoot $DIR/bedita-app/webroot
 
         <Directory $DIR/bedita-app/webroot>
-                Options Indexes FollowSymLinks MultiViews
+                Options FollowSymLinks MultiViews
                 AllowOverride All
                 Order allow,deny
                 allow from all
