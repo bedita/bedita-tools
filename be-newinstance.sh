@@ -60,7 +60,6 @@ then
 	usage
 fi
 
-BEFRONT_DIR="frontends"
 BE_REPO="https://github.com/bedita/bedita.git"
 
 DIR="$BE_DIR/$BE_INSTANCE"
@@ -98,9 +97,6 @@ cd $DIR
 
 echo "Executing: git clone -b $BE_BRANCH $BE_REPO . [insert auth info if needed]"
 git clone -b $BE_BRANCH $BE_REPO .
-
-echo "Executing: mkdir $DIR/$BEFRONT_DIR"
-mkdir $DIR/$BEFRONT_DIR
 
 echo "Executing: mkdir $DIR/apache"
 mkdir $DIR/apache
@@ -162,9 +158,6 @@ if [ "$BE_PORT" == 'https' ]; then
 else
     echo "$APACHE_CFG_HTTP" > $DIR/apache/$BE_INSTANCE
 fi
-
-echo "Executing: mkdir $DIR/modules"
-mkdir $DIR/modules
 
 echo "Releasing .sample files in $DIR/bedita-app/config"
 cd $DIR/bedita-app/config
