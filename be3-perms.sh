@@ -19,9 +19,9 @@ echo "Web server user is: $HTTPDUSER"
 FOLDER=bedita-app
 echo "permissions on $FOLDER"
 echo "setfacl -R -m u:${HTTPDUSER}:rwx $FOLDER/tmp"
-#setfacl -R -m u:${HTTPDUSER}:rwx $FOLDER/tmp
+setfacl -R -m u:${HTTPDUSER}:rwx $FOLDER/tmp
 echo "setfacl -R -d -m u:${HTTPDUSER}:rwx  $FOLDER/tmp"
-#setfacl -R -d -m u:${HTTPDUSER}:rwx  $FOLDER/tmp
+setfacl -R -d -m u:${HTTPDUSER}:rwx  $FOLDER/tmp
 
 
 for f in `ls -d frontends/*/`
@@ -29,7 +29,7 @@ do
         
         echo "permissions on $f"
         echo "setfacl -R -m u:${HTTPDUSER}:rwx ${f}tmp"
-        #setfacl -R -m u:${HTTPDUSER}:rwx ${f}tmp
+        setfacl -R -m u:${HTTPDUSER}:rwx ${f}tmp
         echo "setfacl -R -d -m u:${HTTPDUSER}:rwx ${f}tmp"
-        #setfacl -R -d -m u:${HTTPDUSER}:rwx  ${f}tmp
+        setfacl -R -d -m u:${HTTPDUSER}:rwx  ${f}tmp
 done
