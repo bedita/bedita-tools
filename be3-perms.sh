@@ -14,19 +14,27 @@ if [ -z "$HTTPDUSER" ]; then
 fi
 
 echo "Web server user is: $HTTPDUSER"
+echo ""
 
+echo ""
+echo "Setting permissions on core /tmp and /files"
+echo ""
 
-FOLDER=bedita-app
-echo "permissions on $FOLDER"
-echo "setfacl -R -m u:${HTTPDUSER}:rwx $FOLDER/tmp"
-setfacl -R -m u:${HTTPDUSER}:rwx $FOLDER/tmp
-echo "setfacl -R -d -m u:${HTTPDUSER}:rwx  $FOLDER/tmp"
-setfacl -R -d -m u:${HTTPDUSER}:rwx  $FOLDER/tmp
+for f in bedita-app/tmp bedita-app/webroot/files
+do
+        echo "permissions on $f"
+        echo "setfacl -R -m u:${HTTPDUSER}:rwx ${f}"
+        setfacl -R -m u:${HTTPDUSER}:rwx ${f}
+        echo "setfacl -R -d -m u:${HTTPDUSER}:rwx ${f}"
+        setfacl -R -d -m u:${HTTPDUSER}:rwx  ${f}
+done
 
+echo ""
+echo "Setting permissions on frontends /tmp"
+echo ""
 
 for f in `ls -d frontends/*/`
 do
-        
         echo "permissions on $f"
         echo "setfacl -R -m u:${HTTPDUSER}:rwx ${f}tmp"
         setfacl -R -m u:${HTTPDUSER}:rwx ${f}tmp
