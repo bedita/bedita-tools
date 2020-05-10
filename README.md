@@ -23,3 +23,9 @@ Backend /tmp and /files permissions are recursively changed using `setfacl` dire
 Frontends /tmp are also recursively changed
 
 Usage: be3-perms.sh 
+
+## be3-reindex.sh
+
+Shell script to reindex ElasticSearch concurrently, by object type. For usage info, launch the script with no arguments or with `--help` argument.
+
+The script requires `tmux` to be installed and works using the `dbadmin` Cake shell provisioned by BEdita.
